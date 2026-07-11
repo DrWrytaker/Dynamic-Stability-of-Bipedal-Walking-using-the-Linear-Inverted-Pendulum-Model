@@ -117,7 +117,7 @@ The analysis works in the sagittal plane (front-to-back motion), which captures 
 ### 3.2 The Inverted Pendulum — Full Nonlinear Model
 
 <p align="center">
-  <img src="images/fig1-inverted-pendulum-model.png" alt="Inverted pendulum model of a biped" width="500">
+  <img src="fig1-inverted-pendulum-model.png" alt="Inverted pendulum model of a biped" width="500">
 </p>
 
 > **Figure 1** — Inverted pendulum model of a biped in the sagittal plane. The foot (pivot) is at position *p*, the COM is at horizontal position *x* and height *h*. The angle from vertical is *θ*.
@@ -159,7 +159,7 @@ $$\ddot{x} = \frac{g}{h}(x-p) \tag{4}$$
 The Zero Moment Point is the point on the ground where the net moment from all ground-contact forces is zero — the effective pivot of the whole body.
 
 <p align="center">
-  <img src="images/fig2-zmp-concept.png" alt="Zero Moment Point concept diagram" width="500">
+  <img src="fig2-zmp-concept.png" alt="Zero Moment Point concept diagram" width="500">
 </p>
 
 > **Figure 2** — The ZMP is the point where the ground reaction force effectively acts. Stability requires the ZMP to remain inside the foot support polygon. If the ZMP exits, the robot tips over.
@@ -197,7 +197,7 @@ Open-loop poles: *s* = +3.50 and *s* = −3.50. The RHP pole at *s* = +3.50 mean
 The COM must track a reference trajectory *x_ref* (planned by the walking pattern generator) while keeping the ZMP inside the support polygon. A feedback controller *C(s)* adjusts the foot placement *p* based on the error *e = x_ref − x*.
 
 <p align="center">
-  <img src="images/fig3-closed-loop-block-diagram.png" alt="Closed-loop PD control block diagram" width="500">
+  <img src="fig3-closed-loop-block-diagram.png" alt="Closed-loop PD control block diagram" width="500">
 </p>
 
 > **Figure 3** — Closed-loop block diagram. The PD controller *C(s)* adjusts foot placement *p* to bring the COM to the reference *x_ref*.
@@ -227,7 +227,7 @@ $$K_d = 2\zeta\frac{\omega_n}{g/h} = 2\times0.7\times\frac{4.0}{12.26} \approx 0
 ### 7.4 Root Locus Analysis
 
 <p align="center">
-  <img src="images/fig4-root-locus.png" alt="Root locus plot for the LIPM with PD control" width="550">
+  <img src="fig4-root-locus.png" alt="Root locus plot for the LIPM with PD control" width="550">
 </p>
 
 > **Figure 4** — Root locus for the LIPM with PD control as *K* varies. The cross marks are open-loop poles at *s* = ±3.50. Yellow dots show the chosen closed-loop poles *s* = −2.80 ± j2.86. Both branches enter the LHP for *K* > 2.86.
@@ -281,7 +281,7 @@ $$A = \begin{bmatrix}1 & 0.005 & 1.25\times10^{-5}\\0&1&0.005\\0&0&1\end{bmatrix
 The very small values in *B* for position and velocity make physical sense: a 5 ms jerk pulse barely moves the position or velocity directly, but its effect accumulates over many steps to produce smooth motion.
 
 <p align="center">
-  <img src="images/fig5-jerk-signal-chain.png" alt="Jerk input signal chain diagram" width="600">
+  <img src="fig5-jerk-signal-chain.png" alt="Jerk input signal chain diagram" width="600">
 </p>
 
 > **Figure 5** — Signal chain for the jerk-input state-space model. Jerk *u* integrates to acceleration ẍ, then to velocity ẋ, then to position *x*. The ZMP is an algebraic function of *x* and *ẍ* (Eq. 16).
@@ -359,7 +359,7 @@ For a foot of length 24 cm with an 80% safety margin, the allowed range is *p_{k
 $$\alpha = \min\left(\frac{|p_{max}|}{|p_{k+1}|}, 0.8\right), \qquad u_k \leftarrow \alpha\, u_k \tag{38}$$
 
 <p align="center">
-  <img src="images/fig6-zmp-constraint-geometry.png" alt="ZMP constraint geometry diagram" width="500">
+  <img src="fig6-zmp-constraint-geometry.png" alt="ZMP constraint geometry diagram" width="500">
 </p>
 
 > **Figure 6** — ZMP constraint geometry. The foot contact area is 24 cm long. The green shaded zone (±9.6 cm, 80% safety margin) is the allowed ZMP region; if the predicted ZMP exits this zone, the control input is scaled down by Eq. (38).
@@ -367,7 +367,7 @@ $$\alpha = \min\left(\frac{|p_{max}|}{|p_{k+1}|}, 0.8\right), \qquad u_k \leftar
 ### 8.12 LQR Control Architecture
 
 <p align="center">
-  <img src="images/fig7-lqr-control-architecture.png" alt="Complete LQR control architecture diagram" width="600">
+  <img src="fig7-lqr-control-architecture.png" alt="Complete LQR control architecture diagram" width="600">
 </p>
 
 > **Figure 7** — Complete LQR control architecture. The reference generator produces *x_ref, ẋ_ref, ẍ_ref*. The feedforward path eliminates phase lag; the LQR feedback (with integral augmentation) handles disturbances; the ZMP constraint check provides a safety layer before the command reaches the plant.
@@ -397,7 +397,7 @@ With *K_p* = 2.30 and *K_d* = 0.46, the closed-loop poles are at *s = −2.80 ±
 $$x(t) = 1 - e^{-\zeta\omega_n t}\left(\cos\omega_d t + \frac{\zeta\omega_n}{\omega_d}\sin\omega_d t\right), \quad \omega_d = \omega_n\sqrt{1-\zeta^2} = 2.86 \text{ rad/s} \tag{39}$$
 
 <p align="center">
-  <img src="images/fig8-pd-step-response.png" alt="PD controller closed-loop step response" width="550">
+  <img src="fig8-pd-step-response.png" alt="PD controller closed-loop step response" width="550">
 </p>
 
 > **Figure 8** — Step response of the LIPM with PD control (K_p = 2.30, K_d = 0.46). The COM reaches the reference with ≈4% overshoot and settles in ≈1.5 s.
@@ -405,7 +405,7 @@ $$x(t) = 1 - e^{-\zeta\omega_n t}\left(\cos\omega_d t + \frac{\zeta\omega_n}{\om
 ### 9.2 LQR Controller
 
 <p align="center">
-  <img src="images/fig9-lqr-com-tracking.png" alt="LQR controller COM tracking response" width="550">
+  <img src="fig9-lqr-com-tracking.png" alt="LQR controller COM tracking response" width="550">
 </p>
 
 > **Figure 9** — Center of Mass tracking using the LQR controller, applied to a step reference trajectory of 0.05 m.
@@ -413,7 +413,7 @@ $$x(t) = 1 - e^{-\zeta\omega_n t}\left(\cos\omega_d t + \frac{\zeta\omega_n}{\om
 The ZMP trajectory is obtained directly from the simulated state using *p = x − (h/g)ẍ*, with safety bounds at 80% of the foot half-length:
 
 <p align="center">
-  <img src="images/fig10-zmp-trajectory.png" alt="ZMP trajectory during LQR-controlled walking" width="550">
+  <img src="fig10-zmp-trajectory.png" alt="ZMP trajectory during LQR-controlled walking" width="550">
 </p>
 
 > **Figure 10** — Predicted ZMP trajectory during walking. The controller keeps the ZMP within the admissible support-polygon bounds of ±9.6 cm.
